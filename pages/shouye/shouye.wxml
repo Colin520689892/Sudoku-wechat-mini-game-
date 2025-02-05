@@ -1,0 +1,29 @@
+<!--pages/shouye/shouye.wxml-->
+<!-- 在 .wxml 文件中 -->
+<view class="button-container">
+  <!-- 主标题按钮 -->
+  <view class="sudoku-title">数独</view>
+
+  <!-- 游戏操作按钮 -->
+  <view class="menu-button" bindtap="showDifficultyDialog">新游戏</view>
+  <view class="menu-button1" wx:if="{{hasSavedGame}}"bindtap="continueGame">继续游戏</view>
+</view>
+
+<!-- 在 .wxml 文件中 -->
+<!-- 主界面按钮 -->
+
+<!-- 难度选择弹窗 -->
+<view class="mask" wx:if="{{showDifficultyDialog}}" catchtap="hideDifficultyDialog">
+  <view class="dialog-box" catchtap="stopPropagation">
+    <view class="dialog-title">游戏难度</view>
+    <view 
+      class="difficulty-item" 
+      wx:for="{{difficultyList}}" 
+      wx:key="index"
+      bindtap="selectDifficulty"
+      data-level="{{item.value}}"
+    >
+      {{item.label}}
+    </view>
+  </view>
+</view>

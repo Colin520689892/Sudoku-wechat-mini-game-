@@ -1,0 +1,57 @@
+<view class="biaotou">
+  <text>{{difficulty}}</text>
+  <text class="is_wrong" wx:if="{{wrong_num != 0}}">错误: {{wrong_num}}/3</text>
+  <text class="is_correct" wx:else>{{is_correct}}</text>
+</view>
+<view class="waibiankuang">
+	<block wx:for="{{dots}}" wx:key="index">
+    <view class="dot {{item.className}}"  data-index="{{index}}"bindtap="xiaqi">
+				
+        <text class="{{item.number === answer[index] ? 'shuzi' : 'wrong_num2'}}" wx:if="{{item.number !== 0}}">{{item.number}}</text>
+		</view>
+  </block>
+    <!-- 这个是创建竖线 -->
+    <block wx:for="{{rowLines}}" wx:key="index">
+    <view class="rowline" style="top: {{item.top}};"></view>
+  </block>
+  <!-- 这个是创建横线 -->
+  <block wx:for="{{colLines}}" wx:key="index">
+    <view class="colline" style="left: {{item.left}};"></view>
+  </block>
+</view>
+<!-- 按钮弹窗 -->
+<view class="container1">
+  <view class="yuan" bindtap="cachu">擦除</view>
+  <view class="yuan" bindtap="tishi1">提示</view>
+</view>
+<!-- 数字弹窗 -->
+<view class="block1">
+  <block wx:for="{{shuzis}}" wx:key="index">
+    <view class="view1" data-index="{{index}}"bindtap="tianshuzi">
+      <text>{{item.number}}</text>
+    </view>
+  </block>
+</view>
+<!-- 游戏结束弹窗 -->
+<view class="mask" wx:if="{{wrong_num==3}}">
+  <view class="dialog-box" catchtap="stopPropagation">
+    <view class="dialog-title">游戏结束</view>
+    <view class="cuowu1">你犯了3个错误,游戏结束</view>
+    <view class="button1" bindtap="new_opp">
+      <text>第二次机会</text>
+    </view>
+    <view class="button1" bindtap="fanhui">
+      <text>新游戏</text>
+    </view>
+  </view>
+</view>
+
+<!-- 恭喜过关弹窗 -->
+<view class="mask" wx:if="{{is_win}}">
+  <view class="dialog-box" catchtap="stopPropagation">
+    <view class="dialog-title">游戏结束</view>
+    <view class="button1" bindtap="jixu">
+      <text>下一关</text>
+    </view>
+  </view>
+</view>

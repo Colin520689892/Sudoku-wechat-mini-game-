@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/shouye/shouye",
+    "pages/logs/logs",
+    "pages/index/index",
+    "pages/jiu/jiu"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#2873e4"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="sudoku-board">
+    <block wx:for="{{board}}" wx:key="index">
+      <view class="row">
+        <block wx:for="{{item}}" wx:key="index">
+          <input 
+            class="cell {{item.fixed ? 'fixed' : ''}}" 
+            value="{{item.value}}" 
+            disabled="{{item.fixed}}" 
+            bindinput="onInput" 
+            data-row="{{index}}" 
+            data-col="{{idx}}"
+          />
+        </block>
+      </view>
+    </block>
+  </view>
+  <button bindtap="checkSolution">检查答案</button>
+  <button bindtap="resetBoard">重置</button>
+</view>
